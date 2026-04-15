@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+
+body {
+  @apply bg-bg text-text-primary font-sans;
+}
+
+html.dark body {
+  @apply bg-bg-dark text-text-white;
+}
+
+body{
+    font-family:sans-serif;
+}
+
+
+
+@theme {
+
+  /* BRAND COLORS */
+  --color-primary: #2563EB;
+  --color-secondary: #9333EA;
+  --color-accent: #22C55E;
+
+  /* BACKGROUND */
+  --color-bg: #F8FAFC;
+  --color-bg-dark: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-dark: #1E293B;
+
+  /* TEXT COLORS */
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #4B5563;
+  --color-text-light: #9CA3AF;
+  --color-text-white: #FFFFFF;
+  --color-text-success: #22C55E;
+  --color-text-error: #EF4444;
+
+  /* STATUS */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  
+  /* FONT SIZE */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+
+  /* RADIUS */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  /* SHADOW */
+  --shadow-card: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-soft: 0 2px 8px rgba(0,0,0,0.08);
+}
