@@ -1,128 +1,138 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+
 const Footer = () => {
+  const [open, setOpen] = useState<string | null>(null);
+
+  const toggle = (section: string) => {
+    setOpen(open === section ? null : section);
+  };
+
+  const sections = [
+    {
+      title: "Company",
+      items: ["About Us", "Contact Us", "Careers", "Updates"],
+    },
+    {
+      title: "Our Centres",
+      items: ["New Delhi", "Patna", "Kota", "Noida", "View All"],
+    },
+    {
+      title: "Popular Exams",
+      items: ["IIT JEE", "NEET", "GATE", "UPSC"],
+    },
+    {
+      title: "Quick Links",
+      items: ["PW Prerna", "PW SIP", "Investor Relations"],
+    },
+    {
+      title: "Products",
+      items: ["App Learning", "PW Talk", "Study Materials"],
+    },
+    {
+      title: "Resources",
+      items: ["Class 10 Notes", "Class 12 Notes", "PYQs"],
+    },
+    {
+      title: "Connect",
+      items: ["Email Us", "Talk to Counselor", "Help Center"],
+    },
+  ];
+
   return (
-    <footer className=" max-w-4/5 m-auto text-black px-6 py-10 mt-10 w-4/5">
-      {/* TOP SECTION */}
-      <div className="text-secondary">Appg</div>
-      <div className="text-textPrimary">Main Text</div>
-      <div className="text-textSecondary">Secondary</div>
-      <div className="text-textLight">Light</div>
-      <div className="text-textSuccess">Success</div>
-      <div className="text-text-error">Error</div>
-
-      <button
-        onClick={() => document.documentElement.classList.toggle("dark")}
-        className="border px-3 py-1 cursor-pointer "
-      >
-        Toggle Theme
-      </button>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 border-b border-borderLight pb-8">
+    <footer className="bg-bg border-t border-borderLight px-6 py-12 mt-20">
+      {/* 🔝 TOP SECTION */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-8">
         {/* BRAND */}
+        <div className="md:col-span-2">
+          <h2 className="text-xl font-bold text-primary">EduNova</h2>
 
-        <div>
-          <h2 className="text-2xl font-bold text-primary mb-3">EduNova</h2>
-          <p className="text-sm">
+          <p className="text-sm text-textSecondary mt-3">
             We understand that every student has unique needs and abilities,
             that’s why our platform adapts to help you grow.
           </p>
 
-          <div className="mt-4 space-y-2">
-            <button className="bg-primary text-white px-4 py-2 rounded-md text-sm">
-              Download App (Playstore)
+          {/* SOCIAL */}
+          <div className="flex gap-3 mt-4 text-textSecondary">
+            <FaFacebook className="hover:text-primary cursor-pointer" />
+            <FaInstagram className="hover:text-primary cursor-pointer" />
+            <FaYoutube className="hover:text-primary cursor-pointer" />
+            <FaLinkedin className="hover:text-primary cursor-pointer" />
+          </div>
+
+          {/* APP BUTTONS */}
+          <div className="mt-6 flex flex-col gap-3">
+            <button className="bg-primary text-white px-4 py-2 rounded-md text-sm hover:opacity-90">
+              📱 Download on Play Store
             </button>
-            <button className="bg-secondary text-white px-4 py-2 rounded-md text-sm">
-              Download App (Appstore)
+
+            <button className="bg-secondary text-white px-4 py-2 rounded-md text-sm hover:opacity-90">
+              🍎 Download on App Store
             </button>
           </div>
         </div>
 
-        {/* COMPANY */}
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Company</h3>
-          <ul className="space-y-2 text-sm">
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li>Careers</li>
-            <li>Updates</li>
-          </ul>
-        </div>
+        {/* 🔥 LINKS SECTION */}
+        <div className="md:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {sections.map((sec) => (
+            <div key={sec.title}>
+              {/* HEADER */}
+              <div
+                className="flex justify-between items-center cursor-pointer md:cursor-default"
+                onClick={() => toggle(sec.title)}
+              >
+                <h3 className=" text-xl font-semibold text-textPrimary">{sec.title}</h3>
 
-        {/* CENTRES */}
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Our Centres</h3>
-          <ul className="space-y-2 text-sm">
-            <li>New Delhi</li>
-            <li>Patna</li>
-            <li>Kota</li>
-            <li>Noida</li>
-            <li>View All</li>
-          </ul>
-        </div>
+                <ChevronDown
+                  className={`md:hidden transition ${
+                    open === sec.title ? "rotate-180" : ""
+                  }`}
+                  size={18}
+                />
+              </div>
 
-        {/* EXAMS */}
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Popular Exams</h3>
-          <ul className="space-y-2 text-sm">
-            <li>IIT JEE</li>
-            <li>NEET</li>
-            <li>GATE</li>
-            <li>UPSC</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* MIDDLE LINKS */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 py-8 border-b border-borderLight">
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li>PW Prerna</li>
-            <li>PW SIP</li>
-            <li>Investor Relations</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Products</h3>
-          <ul className="space-y-2 text-sm">
-            <li>PW App Learning</li>
-            <li>PW Talk</li>
-            <li>Study Materials</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Resources</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Class 10 Notes</li>
-            <li>Class 12 Notes</li>
-            <li>PYQs</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-semibold text-textPrimary mb-3">Connect</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Email Us</li>
-            <li>Talk to Counselor</li>
-          </ul>
+              {/* ITEMS */}
+              <ul
+                className={`mt-3 space-y-2 text-sm text-textSecondary transition-all duration-300
+                ${
+                  open === sec.title
+                    ? "max-h-40"
+                    : "max-h-0 md:max-h-full overflow-hidden"
+                }`}
+              >
+                {sec.items.map((item, i) => (
+                  <li key={i} className="hover:text-primary cursor-pointer">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* ABOUT */}
-      <div className="max-w-7xl mx-auto py-6 text-sm text-textLight">
+      {/* 🧠 ABOUT */}
+      <div className="max-w-7xl mx-auto py-6 text-sm text-textLight border-t border-borderLight mt-10">
         <p>
           EduNova is an online learning platform providing accessible and
           comprehensive education for students preparing for competitive exams.
-          We aim to make learning simple, effective, and affordable.
+          We aim to make learning simple, effective, and affordable for
+          everyone.
         </p>
       </div>
 
-      {/* BOTTOM */}
+      {/* 🔻 BOTTOM */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-textLight border-t border-borderLight pt-4">
         <p>© 2026 EduNova. All rights reserved.</p>
+
         <div className="flex gap-4 mt-2 md:mt-0">
-          <span>Privacy Policy</span>
-          <span>Terms of Use</span>
+          <span className="cursor-pointer hover:text-primary">
+            Privacy Policy
+          </span>
+          <span className="cursor-pointer hover:text-primary">
+            Terms of Use
+          </span>
         </div>
       </div>
     </footer>

@@ -13,7 +13,14 @@ body{
     font-family:sans-serif;
 }
 
-
+*{
+  button{
+    cursor: pointer;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+}
 
 @theme {
 
@@ -21,6 +28,7 @@ body{
   --color-primary: #2563EB;
   --color-secondary: #9333EA;
   --color-accent: #22C55E;
+  --color-cyan: #CFFAFE;
 
   /* BACKGROUND */
   --color-bg: #F8FAFC;
